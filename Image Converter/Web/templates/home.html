@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block header %} 
+    <title translate="no">Image Converter</title>
+    <link rel="icon" href="{{ url_for('static',filename='images/icon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <script src="{{ url_for('static',filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/main.js') }}"></script>
+{% endblock header %}
+{% block body %}
+    <div id="container">
+        <header>
+            <a href="#top" id="top" hidden></a>
+            <h1 id="title" translate="no">Image Converter</h1>
+            <div id="git-hub">
+                <a id="git-hub-button" href="https://github.com/Hranutel/Journal"> <img src="{{ url_for('static',filename='images/GitHub icon.png') }}" alt="" width="35" height="35">  <b>Git Hub</b></a>
+            </div>
+        </header>
+        <main>
+            <div id="description">
+                <p>Image Converter is a tool that converts your images into .png, .jpg, .jpeg, .jfif, .gif, .bmp,
+                     .pdf and .svg for free and without registration</p>
+            </div>
+            <hr>
+            <div id="basic-conversion">
+                <h2>Basic conversion</h2>
+                <p>Here you can converts your (.jpg .jpeg .apng .png .bmp .tiff .tif .webp .jfif .ico .cur .gif .svg .afiv) images to the formats listed above (Convert to SVG below)</p>
+                <div id="select-mode">
+                    <button id="select-image"><img src="{{ url_for('static',filename='images/icon.png') }}" alt="" width="33" class="icon"> <b>Add image</b></button>
+                    <input type="file" name="image" id="basic-conversion-image" hidden accept=".png, .jpg, .jpeg, .jfif, .gif, .ico, .bmp, .bmp, .pdf, .svg">
+                    <button id="select-folder"> <img src="{{ url_for('static',filename='images/folder icon.png') }}" alt="" width="40" class="icon"> <b>Add folder</b></button>
+                    <input type="file" name="folder" id="basic-conversion-folder" webkitdirectory hidden>
+                </div>
+                <div id="select-extension">
+                    <img id="preview"></img>
+                    <br>
+                    <label class="clue" for="conversion-extension">Select extension</label>
+                    <input list="extensions" id="selected-extension" name="conversion-extension">
+                    <datalist id="extensions">
+                        <option value="png">PNG</option>
+                        <option value="jpg">JPG</option>
+                        <option value="jpeg">JPEG</option>
+                        <option value="jfif">JFIF</option>
+                        <option value="gif">GIF</option>
+                        <option value="bmp">BMP</option>
+                        <option value="pdf">PDF</option>
+                    </datalist>
+                </div>
+                <div id="convert-file">
+                    <p id="question">Convert "$filename" ?</p>
+                    <button id="convert">Yes, convert</button> 
+                    <button id="cancel">Cancel</button>
+                </div>
+            </div>
+            <div id="separator"></div>
+            <div id="svg-conversion">
+                <h2>SVG conversion</h2>
+                <iframe src="https://www.visioncortex.org/vtracer/" frameborder="0" ></iframe>
+            </div>
+        </main>
+    </div>
+{% endblock body %}
